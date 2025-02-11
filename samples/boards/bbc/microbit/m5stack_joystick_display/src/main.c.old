@@ -1,0 +1,30 @@
+#include <stdio.h>
+//#include <string.h>
+//#include <errno.h>
+//#include <stddef.h>
+
+#include <zephyr/kernel.h>
+#include <zephyr/types.h>
+#include <zephyr/sys/printk.h>
+#include <zephyr/sys/byteorder.h>
+#include <zephyr/drivers/i2c.h>
+
+static const struct device *i2c;
+
+int get_value(uint8_t *val)
+{
+	return(i2c_reg_read_byte(i2c,0x52,0x0,val));
+}
+
+int main(void)
+{
+	uint8_t val[3];
+
+	i2c = DEVICE_DT_GET(DT_NODELABEL(i2c1));
+
+	while (1) {
+		k_msleep(100);
+		get_value(val);
+        	printk("Joystick:(%d, %d):%d\n",val[0],val[1],val[2]);
+	}
+}
