@@ -15,6 +15,7 @@
 bool game_flag = false;
 
 static const struct gpio_dt_spec sw0_gpio = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
+static const struct pwm_dt_spec pwm = PWM_DT_SPEC_GET(DT_PATH(zephyr_user));
 
 // ボタンコールバック: ゲームスタート用
 static void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
@@ -79,6 +80,9 @@ int main(void)
 				printk("score:%d\n",score);
 				e_x=rand()%5;
 				e_y=rand()%5;
+				pwm_set_dt(&pwm, pwm.period, pwm.period / 2U);
+				k_sleep(K_MSEC(60));
+				pwm_set_dt(&pwm, 0, 0);
 			}
 			k_msleep(25);
 		}
