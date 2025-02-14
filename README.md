@@ -8,3 +8,4 @@ The following demonstrations require an [M5Stack Joystick](https://docs.m5stack.
 
 - [m5stack_joystick](https://github.com/610t/zephyr-playground/tree/main/samples/boards/bbc/microbit/m5stack_joystick): Show joystick information at serial output.
 - [m5stack_joystick_display](https://github.com/610t/zephyr-playground/tree/main/samples/boards/bbc/microbit/m5stack_joystick_display): Move dot with Joystick.
+- [m5stack_joystick_dot_eater](https://github.com/610t/zephyr-playground/tree/main/samples/boards/bbc/microbit/m5stack_joystick_dot_eater): Move dot with Joystick.
